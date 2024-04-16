@@ -7,7 +7,7 @@ const shortenedLink = document.querySelector(".short-link");
 
 const handleSubmit = async () => {
   let url = document.querySelector("#url").value;
-  const response = await fetch("http://localhost:8000/encode", {
+  const response = await fetch("https://shortner-l4qc.onrender.com/encode", {
     headers: {
       "Content-Type": "application/json",
     },
