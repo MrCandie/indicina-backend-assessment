@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import path from "path";
 dotenv.config();
 
 import globalErrorController from "./controllers/error-controller";
@@ -10,6 +11,7 @@ import AppError from "./utils/app-error";
 import urlRoute from "./routes/url-route";
 
 const app = express();
+const dirname = path.resolve();
 
 const corsOptions = {
   origin: "*",
@@ -20,12 +22,13 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(express.static(dirname + "/public"));
 
 app.get("/", (req, res) => {
   res.send("<h1>WELCOME TO INDOCINA</h1>");
 });
 
-app.use("/api", urlRoute);
+app.use("/", urlRoute);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

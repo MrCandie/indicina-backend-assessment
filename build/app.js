@@ -8,11 +8,13 @@ const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const path_1 = __importDefault(require("path"));
 dotenv_1.default.config();
 const error_controller_1 = __importDefault(require("./controllers/error-controller"));
 const app_error_1 = __importDefault(require("./utils/app-error"));
 const url_route_1 = __importDefault(require("./routes/url-route"));
 const app = (0, express_1.default)();
+const dirname = path_1.default.resolve();
 const corsOptions = {
     origin: "*",
     credentials: true,
@@ -21,10 +23,11 @@ const corsOptions = {
 app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
 app.use(express_1.default.json());
+app.use(express_1.default.static(dirname + "/public"));
 app.get("/", (req, res) => {
     res.send("<h1>WELCOME TO INDOCINA</h1>");
 });
-app.use("/api", url_route_1.default);
+app.use("/", url_route_1.default);
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
