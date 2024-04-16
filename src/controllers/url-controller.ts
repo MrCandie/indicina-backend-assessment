@@ -28,7 +28,7 @@ export const createUrl = catchAsync(
     const data = await URL.create({ url, urlId: randomUUID() });
 
     // get current url path
-    const shortenedUrl = `${req.protocol}://${req.get("host")}/${data.urlId}`;
+    const shortenedUrl = `https://shortner-l4qc.onrender.com/${data.urlId}`;
 
     return res.status(200).json({
       status: "Success",
