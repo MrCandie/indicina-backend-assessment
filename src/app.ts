@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.static(dirname + "/public"));
 
 app.get("/", (req, res) => {
-  res.sendFile(dirname + "/public/index.html");
+  res.sendFile(dirname + "../public/index.html");
 });
 
 app.use("/", urlRoute);
