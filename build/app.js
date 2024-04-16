@@ -25,7 +25,7 @@ app.use(body_parser_1.default.json());
 app.use(express_1.default.json());
 app.use(express_1.default.static(dirname + "/public"));
 app.get("/", (req, res) => {
-    res.sendFile(dirname + "../public/index.html");
+    res.sendFile(dirname + "/public/index.html");
 });
 app.use("/", url_route_1.default);
 app.use((req, res, next) => {
