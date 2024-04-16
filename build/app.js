@@ -24,9 +24,9 @@ app.use((0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
 app.use(express_1.default.json());
 app.use(express_1.default.static(dirname + "/public"));
-// app.get("/", (req, res) => {
-//   res.send("<h1>WELCOME TO INDOCINA</h1>");
-// });
+app.get("/", (req, res) => {
+    res.sendFile(dirname + "/public/index.html");
+});
 app.use("/", url_route_1.default);
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");

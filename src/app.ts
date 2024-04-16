@@ -24,9 +24,9 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static(dirname + "/public"));
 
-// app.get("/", (req, res) => {
-//   res.send("<h1>WELCOME TO INDOCINA</h1>");
-// });
+app.get("/", (req, res) => {
+  res.sendFile(dirname + "/public/index.html");
+});
 
 app.use("/", urlRoute);
 
