@@ -1,12 +1,13 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv").config();
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-const globalErrorController = require("./controllers/error-controller");
-const AppError = require("./utils/app-error");
-// const authRoute = require("./routes/auth-route");
+import globalErrorController from "./controllers/error-controller";
+import AppError from "./utils/app-error";
+import urlRoute from "./routes/url-route";
 
 const app = express();
 
@@ -21,8 +22,10 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("<h1>welcome to INDICINA</h1>");
+  res.send("<h1>WELCOME TO INDOCINA</h1>");
 });
+
+app.use("/api", urlRoute);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -31,28 +34,24 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-  res.setHeader("Access-Control-Allow-Credentials", true);
+
   next();
 });
 
-// routes here
-// app.use("/api/v1/auth", authRoute);
-
 app.all("*", (req, res, next) => {
-  return next(new AppError(`Can't find ${req.originalUrl} on this server`));
+  return next(
+    new AppError(`Can't find ${req.originalUrl} on this server`, 500)
+  );
 });
 
 app.use(globalErrorController);
 
-const db = process.env.DATABASE;
+const db: any = process.env.DATABASE;
 
 async function startServer() {
   const port = process.env.PORT || 8080;
   try {
-    const response = await mongoose.connect(db, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(db);
     console.log("database connection successful");
 
     app.listen(port, () => {
