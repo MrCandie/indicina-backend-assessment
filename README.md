@@ -16,19 +16,19 @@ npm run build
 
 ## TEST SHORTENED URL
 
-### https://shortner-l4qc.onrender.com/LmDBm
+https://shortner-l4qc.onrender.com/LmDBm
 
 ## POSTMAN DOCUMENTATION
 
-### https://documenter.getpostman.com/view/27220467/2sA3BkbD29
+https://documenter.getpostman.com/view/27220467/2sA3BkbD29
 
 ## URL PATHS
 
-### https://shortner-l4qc.onrender.com/ to shorten a url
+https://shortner-l4qc.onrender.com/ to shorten a url
 
-### https://shortner-l4qc.onrender.com/{URL_ID} OR https://shortner-l4qc.onrender.com/decode/{URL_ID} to decode and redirect a shortened url
+https://shortner-l4qc.onrender.com/{URL_ID} OR https://shortner-l4qc.onrender.com/decode/{URL_ID} to decode and redirect a shortened url
 
-### https://shortner-l4qc.onrender.com/statistic/{URL_ID} to get shortened url statistics or details
+https://shortner-l4qc.onrender.com/statistic/{URL_ID} to get shortened url statistics or details
 
 ## Tech Used
 
