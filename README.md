@@ -14,6 +14,10 @@ npm start
 npm run build
 ```
 
+## TEST SHORTENED URL
+
+### https://shortner-l4qc.onrender.com/LmDBm
+
 ## POSTMAN DOCUMENTATION
 
 ### https://documenter.getpostman.com/view/27220467/2sA3BkbD29

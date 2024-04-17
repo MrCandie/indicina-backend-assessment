@@ -25,7 +25,7 @@ exports.createUrl = (0, catch_async_1.default)(async (req, res, next) => {
     }
     // store urll in database together with a unique identifier
     const data = await url_model_1.default.create({ url, urlId: randomUUID() });
-    // get current url path
+    // shortened url
     const shortenedUrl = `https://shortner-l4qc.onrender.com/${data.urlId}`;
     return res.status(200).json({
         status: "Success",
